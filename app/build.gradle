@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation project(':jokeJavaLibrary')
+    implementation project(':jokeAndroidLibrary')
 }
