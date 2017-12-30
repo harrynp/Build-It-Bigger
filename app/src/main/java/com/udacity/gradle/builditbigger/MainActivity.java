@@ -1,15 +1,10 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.github.harrynp.jokeandroidlibrary.JokeDisplayActivity;
-import com.github.harrynp.jokejavalibrary.JokeTeller;
 
 
 public class MainActivity extends AppCompatActivity {
