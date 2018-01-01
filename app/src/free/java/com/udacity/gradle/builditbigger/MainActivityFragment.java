@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.github.harrynp.jokeandroidlibrary.JokeDisplayActivity;
 import com.google.android.gms.ads.AdListener;
@@ -21,6 +24,8 @@ import com.google.android.gms.ads.InterstitialAd;
 public class MainActivityFragment extends Fragment implements JokeListener {
     private InterstitialAd mInterstitialAd;
     private String mJoke;
+    private ProgressBar mProgressBar;
+    private RelativeLayout mRelativeLayout;
 
     public MainActivityFragment() {
     }
@@ -29,6 +34,7 @@ public class MainActivityFragment extends Fragment implements JokeListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+        mRelativeLayout = root.findViewById(R.id.rl_main);
         mInterstitialAd = new InterstitialAd(getContext());
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.loadAd(new AdRequest.Builder()
@@ -47,9 +53,11 @@ public class MainActivityFragment extends Fragment implements JokeListener {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showLoading();
                 getJoke();
             }
         });
+
 
         AdView mAdView = root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -59,12 +67,15 @@ public class MainActivityFragment extends Fragment implements JokeListener {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        mProgressBar = root.findViewById(R.id.pb_loading_indicator);
         return root;
     }
 
     @Override
     public void onJokeReceived(String joke) {
         mJoke = joke;
+        showMainWindow();
         if (joke != null){
             if (mInterstitialAd.isLoaded()){
                 mInterstitialAd.show();
@@ -79,6 +90,16 @@ public class MainActivityFragment extends Fragment implements JokeListener {
         intent.putExtra(JokeDisplayActivity.INTENT_JOKE, mJoke);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void showMainWindow(){
+        mProgressBar.setVisibility(View.INVISIBLE);
+        mRelativeLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void showLoading(){
+        mProgressBar.setVisibility(View.VISIBLE);
+        mRelativeLayout.setVisibility(View.INVISIBLE);
     }
 
     private void getJoke(){
