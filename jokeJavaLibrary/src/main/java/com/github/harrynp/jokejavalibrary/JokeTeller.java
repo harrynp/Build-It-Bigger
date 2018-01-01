@@ -9,9 +9,9 @@ public class JokeTeller {
 
     public JokeTeller(){
         jokes = new ArrayList<>();
-        jokes.add("Q: Why do programmers always mix up Halloween and Christmas? A: Because Oct 31 == Dec 25!");
-        jokes.add("A SQL query goes into a bar, walks up to two tables and asks, Can I join you?");
-        jokes.add("When your hammer is C++, everything begins to look like a thumb.");
+        jokes.add("Joke: Q: Why do programmers always mix up Halloween and Christmas? A: Because Oct 31 == Dec 25!");
+        jokes.add("Joke: A SQL query goes into a bar, walks up to two tables and asks, Can I join you?");
+        jokes.add("Joke: When your hammer is C++, everything begins to look like a thumb.");
     }
 
     public List<String> getJokes(){

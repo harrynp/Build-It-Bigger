@@ -30,6 +30,7 @@ public class JokeTest {
 
         onView(withId(R.id.tv_joke)).check(matches(not(withText(""))));
 
+        onView(withId(R.id.tv_joke)).check(matches(not(withText("Error getting joke."))));
     }
 
 }

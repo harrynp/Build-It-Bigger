@@ -74,7 +74,11 @@ public class MainActivityFragment extends Fragment implements JokeListener {
 
     @Override
     public void onJokeReceived(String joke) {
-        mJoke = joke;
+        if (joke.substring(0, 6).equals("Joke: ")) {
+            mJoke = joke.substring(6);
+        } else {
+            mJoke = "";
+        }
         showMainWindow();
         if (joke != null){
             if (mInterstitialAd.isLoaded()){
