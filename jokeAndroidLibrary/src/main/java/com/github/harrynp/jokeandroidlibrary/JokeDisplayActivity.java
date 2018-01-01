@@ -13,7 +13,7 @@ public class JokeDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_display);
         String joke = getIntent().getStringExtra(INTENT_JOKE);
-        getSupportActionBar().setTitle("Random Joke");
+        getSupportActionBar().setTitle(getString(R.string.joke_display_title));
         TextView jokeTextView = findViewById(R.id.tv_joke);
         if (joke != null && !joke.isEmpty()) {
             jokeTextView.setText(joke);

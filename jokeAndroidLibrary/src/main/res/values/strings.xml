@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">jokeAndroidLibrary</string>
+    <string name="joke_display_title">Random Joke</string>
     <string name="error_message">Error getting joke.</string>
 </resources>

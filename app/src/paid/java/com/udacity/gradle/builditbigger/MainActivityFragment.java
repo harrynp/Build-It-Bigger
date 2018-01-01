@@ -52,9 +52,15 @@ public class MainActivityFragment extends Fragment implements JokeListener {
 
     @Override
     public void onJokeReceived(String joke) {
+        String mJoke;
+        if (joke.substring(0, 6).equals("Joke: ")) {
+            mJoke = joke.substring(6);
+        } else {
+            mJoke = "";
+        }
         showMainWindow();
         Intent intent = new Intent(getActivity(), JokeDisplayActivity.class);
-        intent.putExtra(JokeDisplayActivity.INTENT_JOKE, joke);
+        intent.putExtra(JokeDisplayActivity.INTENT_JOKE, mJoke);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
