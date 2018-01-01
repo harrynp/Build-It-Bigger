@@ -14,6 +14,19 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    flavorDimensions 'tier'
+    productFlavors {
+        free {
+            dimension 'tier'
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            dimension 'tier'
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -37,7 +50,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
     implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    freeImplementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation project(':jokeJavaLibrary')
     implementation project(':jokeAndroidLibrary')
     implementation project(path: ':backend', configuration: 'android-endpoints')
