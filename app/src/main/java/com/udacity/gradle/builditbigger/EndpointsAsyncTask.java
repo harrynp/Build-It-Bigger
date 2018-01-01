@@ -17,16 +17,12 @@ import java.io.IOException;
  * Created by harry on 12/28/2017.
  */
 
-public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<JokeListener, Void, String> {
     private static MyApi myApiService = null;
-    private Context mContext;
-
-    public EndpointsAsyncTask(Context context){
-        mContext = context;
-    }
+    private JokeListener mListener;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(JokeListener... jokeListeners) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -35,6 +31,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
             myApiService = builder.build();
         }
 
+        mListener = jokeListeners[0];
 
         try {
             return myApiService.getJoke().execute().getData();
@@ -43,11 +40,13 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         }
     }
 
+
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(mContext, JokeDisplayActivity.class);
-        intent.putExtra(JokeDisplayActivity.INTENT_JOKE, result);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
+        mListener.onJokeReceived(result);
+//        Intent intent = new Intent(mContext, JokeDisplayActivity.class);
+//        intent.putExtra(JokeDisplayActivity.INTENT_JOKE, result);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        mContext.startActivity(intent);
     }
 }

@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+
     implementation 'com.android.support:appcompat-v7:27.0.2'
     freeImplementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation project(':jokeJavaLibrary')

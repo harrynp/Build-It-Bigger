@@ -15,8 +15,10 @@ public class JokeDisplayActivity extends AppCompatActivity {
         String joke = getIntent().getStringExtra(INTENT_JOKE);
         getSupportActionBar().setTitle("Random Joke");
         TextView jokeTextView = findViewById(R.id.tv_joke);
-        if (joke != null) {
+        if (joke != null && !joke.isEmpty()) {
             jokeTextView.setText(joke);
+        } else {
+            jokeTextView.setText(getString(R.string.error_message));
         }
     }
 }
