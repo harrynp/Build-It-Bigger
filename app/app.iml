@@ -140,7 +140,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/multi-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
@@ -210,5 +209,9 @@
     <orderEntry type="module" module-name="backend" />
     <orderEntry type="module" module-name="jokeAndroidLibrary" />
     <orderEntry type="library" name="android-android-27" level="project" />
+    <orderEntry type="module" module-name="backend" />
+    <orderEntry type="module" module-name="jokeAndroidLibrary" />
+    <orderEntry type="module" module-name="backend" />
+    <orderEntry type="module" module-name="jokeAndroidLibrary" />
   </component>
 </module>
