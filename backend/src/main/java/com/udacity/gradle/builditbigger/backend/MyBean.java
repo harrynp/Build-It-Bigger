@@ -6,14 +6,12 @@ import com.github.harrynp.jokejavalibrary.JokeTeller;
 public class MyBean {
 
     private String myData;
-    private JokeTeller jokeTeller;
 
     public MyBean(){
-        jokeTeller = new JokeTeller();
     }
 
     public String getJoke(){
-        return jokeTeller.getRandomJoke();
+        return new JokeTeller().getRandomJoke();
     }
 
     public String getData() {
